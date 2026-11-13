@@ -3,7 +3,6 @@ using System;
 
 class Program
 {
-
     static void PrintMatrix(int[,] m)
     {
         for (int i = 0; i < m.GetLength(0); i++)
@@ -16,7 +15,6 @@ class Program
         }
     }
 
-   
     static void FindElements(int[,] m)
     {
         int count = 0;
@@ -34,14 +32,15 @@ class Program
             }
         }
 
+        Console.WriteLine("Жұп оң элементтер саны = " + count);
+
         if (count > 0)
         {
-            Console.WriteLine("Жұп оң элементтер саны = " + count);
             Console.WriteLine("Элементтер көбейтіндісі = " + product);
         }
         else
         {
-            Console.WriteLine("Бас диагональдан жоғары жұп оң элементтер жоқ.");
+            Console.WriteLine("Ондай элементтер жоқ.");
         }
     }
 
@@ -50,15 +49,30 @@ class Program
         int nomer = 4;
         int n = 5;
 
+        // TEST = 0: негізгі Random(4)
+        // TEST = 1: барлық элемент 1
+        // TEST = 2: барлық элемент 2
+        int TEST = 0;
+
         int[,] matrix = new int[n, n];
         Random rnd = new Random(nomer);
 
-        // Матрицаны толтыру
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < n; j++)
             {
-                matrix[i, j] = rnd.Next(-10, 11);
+                if (TEST == 1)
+                {
+                    matrix[i, j] = 1;
+                }
+                else if (TEST == 2)
+                {
+                    matrix[i, j] = 2;
+                }
+                else
+                {
+                    matrix[i, j] = rnd.Next(-10, 11);
+                }
             }
         }
 
